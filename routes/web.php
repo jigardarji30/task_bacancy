@@ -17,8 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes([
+    'register' => false, // register routes
+]);
 
+// company controller
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/getCompany','CompanyController@index');
 Route::get('/addCompany','CompanyController@create');
@@ -27,6 +30,7 @@ Route::get('/editCompany/{id}','CompanyController@edit');
 Route::post('/updateCompany','CompanyController@update');
 Route::get('/deleteCompany/{id}','CompanyController@destroy');
 
+// employee controller
 Route::get('/getEmployee','EmployeeController@index');
 Route::get('/addEmployee','EmployeeController@create');
 Route::post('/storeEmployee','EmployeeController@store');
